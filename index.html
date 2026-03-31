@@ -104,8 +104,8 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
+      grid-template-columns: 0.6fr 1.15fr 0.7fr;
+      gap: 24px;
       align-items: stretch;
     }
 
@@ -123,6 +123,41 @@
 
     .hero-copy {
       padding: 40px;
+    }
+
+    .hero-side-photo {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-side-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 620px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-side-photo.left img {
+      object-position: center 18%;
+    }
+
+    .hero-side-photo.right img {
+      object-position: center 25%;
+    }
+
+    .hero-side-photo::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 35%;
+      background: linear-gradient(180deg, rgba(8,20,38,0) 0%, rgba(8,20,38,0.7) 100%);
+      pointer-events: none;
     }
 
     .eyebrow {
@@ -273,6 +308,39 @@
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 20px;
+    }
+
+    .about-heading-photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+    }
+
+    .about-heading-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    .section-heading.about-layout {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+
+    .about-heading-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .about-heading-copy {
+      max-width: 34ch;
     }
 
     .photo-panel {
@@ -479,11 +547,16 @@
     @media (max-width: 980px) {
       .hero-grid,
       .section-heading,
+      .section-heading.about-layout,
       .about-grid,
       .contact-grid,
       .skills-grid,
       .photo-grid {
         grid-template-columns: 1fr;
+      }
+
+      .hero-side-photo img {
+        min-height: 360px;
       }
 
       .hero-copy,
@@ -531,6 +604,7 @@
     <nav class="nav">
       <a class="brand" href="#top">Terrod Shelton</a>
       <div class="nav-links">
+        <a href="https://terrod426-svg.github.io/Sheltons-Connection/" target="_blank" rel="noopener noreferrer">Live Site</a>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
@@ -543,6 +617,9 @@
   <main id="top" class="page-shell">
     <section class="hero">
       <div class="hero-grid">
+        <aside class="hero-side-photo left">
+          <img src="/mnt/data/IMG_6531.JPEG" alt="Portrait of Terrod Shelton" />
+        </aside>
         <div class="hero-copy">
           <div class="eyebrow">Supply Chain • Consulting • Commercial Finance</div>
           <h1>Terrod Shelton</h1>
@@ -559,16 +636,21 @@
           </div>
         </div>
 
-        <aside class="hero-card">
-          <div class="hero-photo">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAcFBQYFBAcGBgYIBwcICxILCwoKCxYPEA0SGhYbGhkWGRgcICgiHB4mHhgZIzAkJiorLi4uGh8zODMtNygtLisBCgoKDQ0NDg0NDisZFRkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAUYDhAMBIgACEQEDEQH/xAAaAAEBAQEBAQEAAAAAAAAAAAAABQYDBAcC/8QARhAAAQMDAgMEBAMGBQQDAQAAAQACAwQREiExBRNBUQYiYXGBkTKRobFC0QcjQlJicuHwFTRDcoOi8RYlQ1Rzo//EABoBAQEBAQEBAQAAAAAAAAAAAAABAgMEBQb/xAAvEQEBAAIBAwMDBAEFAQAAAAABAgMRBCExEkFRYRMiMoGRobHB8AUjQmLh/9oADAMBAAIRAxEAPwD5zREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQEbbQapABy5gA1vPoI5rzVZ6jUq7z92mVcfU7qWmcXu0Hm
+        <aside class="hero-side-photo right">
+          <img src="/mnt/data/E056968A-5EA0-4CA4-8F0D-8B5D497DD933.JPEG" alt="Terrod Shelton in formal attire" />
+        </aside>
       </div>
     </section>
 
     <section id="about">
-      <div class="section-heading">
-        <h2>About</h2>
-        <p>A little more personal than a resume. This is the version I’d give if we were meeting for the first time and talking about where I’m headed.</p>
+      <div class="section-heading about-layout">
+        <div class="about-heading-wrap">
+          <div class="about-heading-photo">
+            <img src="/mnt/data/IMG_6531.JPEG" alt="Portrait of Terrod Shelton" />
+          </div>
+          <h2>About</h2>
+        </div>
+        <p class="about-heading-copy">A little more personal than a resume. This is the version I’d give if we were meeting for the first time and talking about where I’m headed.</p>
       </div>
       <div class="about-grid">
         <div class="panel">
@@ -578,6 +660,18 @@
         <div class="panel">
           <p>I’m currently aiming for early-career roles in supply chain analytics and management, associate consulting, and commercial financing. Those paths all appeal to me for the same reason: they reward strong thinking, clear communication, and the ability to help people make sound decisions. I want my career to be built around being dependable, sharp, and genuinely useful wherever I’m placed.</p>
           <p>Outside of titles and job descriptions, I’m someone who values growth, presentation, and professionalism. I care about doing work that looks polished, makes sense, and reflects well on the team behind it.</p>
+        </div>
+      </div>
+      <div class="photo-grid">
+        <div class="panel photo-panel">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAcFBQYFBAcGBgYIBwcICxILCwoKCxYPEA0SGhYbGhkWGRgcICgiHB4mHhgZIzAkJiorLi4uGh8zODMtNygtLisBCgoKDQ0NDg0NDisZFRkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIBBoC9AMBIgACEQEDEQH/xAAaAAEBAQEBAQEAAAAAAAAAAAAABQYDBAcC/8QATBAAAQMDAgMEBQQHBQkAAAAAAQACAwQREiExBRNBUQYiYXGBkTKRobFCwdHwM1JicuEVQ2JygtLxJENTgpOj0vEkQ5PS8f/EABoBAQEBAQEBAQAAAAAAAAAAAAABAgMEBQb/xAAwEQEBAAICAQQCAQMEAwAAAAABAgMRBCExEkFRYRMiMoGRobHB8BQjQlLh8YLR/9oADAMBAAIRAxEAPwD4LREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQEctnqrW2+2rddq1r3V7b2r1d7f1u9d7G0zC6vZ0c0YxMZJ2jHAyM8V6Pq9d1fV9X9N1tpu1fVrxX69XNHWaRt8k87zY3EOpGB+/nyqt7b1R6R1b1n1jW8d2fL9r+uU9X6vWv1X1f0Xb6qW2lrbU0R3M2yxxwRzJjMEn2xgAewpfL7X1e31t1na9Y1dn123W8N1b1691vW9Veper2OkWdoy6zd4zOkdpwd5OQTgHx9atae8vVPXdre1vbO2+2+798NW2a1tpeZzNojNCXRbzGXyY7yZOAO4xn1rzJ9V9Z9U9VdW1W1vWNb1vtG/W9b169UvXPVuk+nfSZtJe0vJhuY9sYzEnOAeldL3dC8hHcXvX0iM9qM5uEM1XJkOP7Q4rK1R1U9zq1f1nVfSrVnW2m7X9V/F6p6u1pDqNqJ0mPcyJ2nJ2gnH86rZ4r6lq7d1fY9L2bvbU9VvbR0VfJ7m0m7i3kR5dw2s4cAdM8VZcH8M8m7n7hW7n9WvWmG0m4u7S7S0kM0c0YyZJ2kY4yD0q1qk9U9N6r1f1nW+q2m7T9W/F6p6v1pDqNqJ0mPcyJ2nJ2gnH86rZ4r6lq7d1fY9L2bvbU9VvbR0VfJ7m0m7i3kR5dw2s4cAdM8VY9fH8M8m7n7hW7n9WvWmG0m4u7S7S0kM0c0YyZJ2kY4yD0r6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/Z" alt="Terrod Shelton in formal attire" />
+          <div class="photo-note">
+            <p>This second image adds personality and presence without taking away from the professional feel of the page.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <p>The photos on this site are here to make the page feel more personal, not to distract from the work. I wanted the overall look to stay polished and business-ready while still showing some presence and style.</p>
+          <p>That balance matters to me. I want people landing on this page to get a sense of who I am before they ever open my resume.</p>
         </div>
       </div>
     </section>
@@ -716,6 +810,19 @@
         <div class="contact-card">
           <strong>Current focus</strong>
           <p>I’m pursuing entry-level roles in supply chain analytics and management, associate consulting, and commercial financing. I’m especially interested in positions that value strong analysis, communication, and professionalism.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="site-link">
+      <div class="section-heading">
+        <h2>Portfolio Link</h2>
+        <p>This is the live version of my portfolio website hosted on GitHub Pages.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <strong>Live site</strong>
+          <p><a href="https://terrod426-svg.github.io/Sheltons-Connection/" target="_blank" rel="noopener noreferrer">https://terrod426-svg.github.io/Sheltons-Connection/</a></p>
         </div>
       </div>
     </section>
